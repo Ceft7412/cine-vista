@@ -4,7 +4,7 @@ export default function Navbar() {
       <nav className="navbar-top">
         <div className="navbar-top__flex">
           <div className="navbar-top__logo">
-            <h1>Logo</h1>
+            <h1>CineVista</h1>
           </div>
           <div className="navbar-top__menu">
             <span className="navbar-top-menu__item" title="Homepage">
