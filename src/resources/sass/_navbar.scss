@@ -1,0 +1,32 @@
+.navbar-top {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  height: 120px;
+  margin: 0 auto;
+  z-index: 1000;
+  color: white;
+  .navbar-top__flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 150px;
+    width: 100%;
+    height: 100%;
+    .navbar-top__menu {
+      display: flex;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: 600;
+      .navbar-top-menu__item {
+        padding: 10px;
+        cursor: pointer;
+        transition: color 0.3s ease-in;
+        &:hover {
+          color: rgb(200, 200, 200);
+        }
+      }
+    }
+  }
+}
