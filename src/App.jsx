@@ -9,13 +9,14 @@ import {
  * Pages of the app
  */
 
+import Landing from "./pages/Landing";
 import Home from "./pages/Home";
 
 const router = createBrowserRouter(
-  createRoutesFromElements(
+  createRoutesFromElements( 
     <Route path="/">
-      <Route index element={<Home />} />
-      <Route />
+      <Route index element={<Landing />} />
+      <Route path="home" element={<Home />} />
     </Route>
   )
 );
