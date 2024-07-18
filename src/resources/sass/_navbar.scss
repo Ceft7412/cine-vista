@@ -14,6 +14,15 @@
     padding: 20px 150px;
     width: 100%;
     height: 100%;
+    .navbar-top__logo {
+      display: flex;
+      align-items: center;
+      h1 {
+        font-family: "Lilita One";
+        letter-spacing: 2px;
+        color: rgb(92, 92, 236);
+      }
+    }
     .navbar-top__menu {
       display: flex;
       gap: 10px;
