@@ -28,7 +28,7 @@ export default function LandingContent() {
             onClick={toHomepage}
             title="Homepage"
           >
-            <span>View</span>
+            <span>View More</span>
             <div className="landing-content__icon-arrow-wrapper">
               <ArrowForwardRoundedIcon />
             </div>
