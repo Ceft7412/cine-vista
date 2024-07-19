@@ -9,7 +9,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.2s ease-in;
   font-family: "Figtree", arial, sans-serif;
-  background-color: rgba(25, 25, 32, 0.123);
 
   .dark {
   }
@@ -17,6 +16,9 @@ body {
 
 .root-container {
   height: 100vh;
-  max-width: 1500px;
+  width: 100%;
   margin: auto;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(6, 6, 35);
 }
