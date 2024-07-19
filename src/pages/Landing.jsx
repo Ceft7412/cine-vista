@@ -8,10 +8,9 @@ import LandingContent from "../components/LandingContent";
 
 export default function Landing() {
   return (
-    <>
-      <Navbar />
+    <div className="root-container">
+      <Navbar showSearch={false} />
       <LandingContent />
-    </>
+    </div>
   );
 }
-  
