@@ -1,0 +1,16 @@
+.movie-content {
+  background-color: rgb(6, 6, 35);
+  width: 100%;
+  height: 100vh;
+  max-width: 2000px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .movie-content__flex {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+  }
+}
