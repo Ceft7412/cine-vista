@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
  */
 import Popular from "./Popular";
 import Trending from "./Trending";
+import Latest from "./Latest";
 export default function MovieContent() {
   return (
     <>
@@ -12,7 +13,7 @@ export default function MovieContent() {
         <div className="movie-content__flex">
           <Popular />
           <Trending />
-          <div className="latest-movies__block"></div>
+          <Latest />
         </div>
       </div>
     </>
