@@ -26,11 +26,18 @@ export default function Popular() {
       `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_MOVIEDB_API}`
     )
       .then((response) => response.json())
-      .then((data) => setPopularMovies(data.results));
+      .then((data) => {
+        const movies = [...data.results];
+        const moviesMinutes = movies.map((movie) => ({
+          ...movie,
+          minutes: Math.floor(Math.random() * 120) + 60,
+        }));
+
+        setPopularMovies(moviesMinutes);
+      });
   }, []);
 
   useEffect(() => {
-    const atBeginningOfScroll = popularRef.current.scrollLeft <= 0;
     if (scrollValue <= 0) {
       setIsBeginningOfScroll(true);
     } else {
@@ -80,9 +87,7 @@ export default function Popular() {
                   <span className="popular__date">
                     {movie.release_date.substring(0, 4)}
                   </span>
-                  <span className="popular__duration">
-                    {Math.floor(Math.random() * 120) + 60} min
-                  </span>
+                  <span className="popular__duration">{movie.minutes} min</span>
                 </div>
               </div>
             </div>
