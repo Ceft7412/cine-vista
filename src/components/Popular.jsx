@@ -1,11 +1,26 @@
+/**
+ * Hooks
+ */
 import { useEffect, useState, useRef } from "react";
+
+/**
+ * Icons
+ */
 import PlayCircleFilledRoundedIcon from "@mui/icons-material/PlayCircleFilledRounded";
+import ArrowBackIosRoundedIcon from "@mui/icons-material/ArrowBackIosRounded";
+import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
+
 export default function Popular() {
   const popularRef = useRef();
   const [popularMovies, setPopularMovies] = useState([]);
   const [hoveredMovieId, setHoveredMovieId] = useState(null);
+  const [isEndOfScroll, setIsEndOfScroll] = useState(false);
+  const [isBeginningOfScroll, setIsBeginningOfScroll] = useState(false);
+  const [scrollValue, setScrollValue] = useState(0);
 
-  console.log(popularMovies);
+  /**
+   * On mount of the component, the page will fetch the popular movies
+   */
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_MOVIEDB_API}`
@@ -14,8 +29,27 @@ export default function Popular() {
       .then((data) => setPopularMovies(data.results));
   }, []);
 
+  useEffect(() => {
+    const atBeginningOfScroll = popularRef.current.scrollLeft <= 0;
+    if (scrollValue <= 0) {
+      setIsBeginningOfScroll(true);
+    } else {
+      setIsBeginningOfScroll(false);
+    }
+  }, [scrollValue]);
+
   const scroll = (scrollTo) => {
     popularRef.current.scrollLeft += scrollTo;
+    const atEndOfScroll =
+      (popularRef.current.scrollLeft += scrollTo) >
+      popularRef.current.scrollWidth - popularRef.current.clientWidth;
+
+    if (atEndOfScroll) {
+      setIsEndOfScroll(true);
+    } else {
+      setIsEndOfScroll(false);
+      setScrollValue((popularRef.current.scrollLeft += scrollTo));
+    }
   };
   return (
     <>
@@ -54,8 +88,17 @@ export default function Popular() {
             </div>
           ))}
         </div>
-        <button onClick={() => scroll(500)}>Click next</button>
-        <button onClick={() => scroll(-500)}>Click prev</button>
+        {isBeginningOfScroll ? null : (
+          <div className="popular__prev-icon-container" onClick={() => scroll(-510)}>
+            <ArrowBackIosRoundedIcon style={{ fontSize: 40 }} />
+          </div>
+        )}
+
+        {isEndOfScroll ? null : (
+          <div className="popular__next-icon-container" onClick={() => scroll(510)}>
+            <ArrowForwardIosRoundedIcon style={{ fontSize: 40 }} />
+          </div>
+        )}
       </div>
     </>
   );
