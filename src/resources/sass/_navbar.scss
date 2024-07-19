@@ -25,6 +25,7 @@
     }
     .navbar-top__menu {
       display: flex;
+      align-items: center;
       gap: 10px;
       font-size: 18px;
       font-weight: 600;
@@ -33,7 +34,38 @@
         cursor: pointer;
         transition: color 0.3s ease-in;
         &:hover {
-          color: rgb(200, 200, 200);
+          color: rgb(92, 92, 236);
+        }
+      }
+      .navbar-top-menu__search-container {
+        margin-left: 50px;
+        position: relative;
+        width: 250px;
+        display: flex;
+        justify-content: flex-end;
+        .navbar-top-menu__icon-wrapper {
+          cursor: pointer;
+          position: absolute;
+          right: 10px;
+          top: 5px;
+          color: rgb(92, 92, 236);
+        }
+        .navbar-top-menu__input {
+          height: 40px;
+          width: 200px;
+          border-radius: 20px;
+          padding: 10px 15px;
+          padding-right: 40px;
+          color: white;
+          background-color: transparent;
+          border: 1px solid rgba(77, 77, 77, 0.607);
+          font-size: 17px;
+          outline: none;
+          transition: width 0.1s ease-in, border-color 0.2s ease-in;
+          &:focus {
+            width: 250px;
+            border-color: white;
+          }
         }
       }
     }
