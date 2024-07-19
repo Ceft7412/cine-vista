@@ -1,4 +1,5 @@
-export default function Navbar() {
+import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
+export default function Navbar({ showSearch }) {
   return (
     <>
       <nav className="navbar-top">
@@ -13,12 +14,28 @@ export default function Navbar() {
             <span className="navbar-top-menu__item" title="Popular Movies">
               Movies
             </span>
-            <span className="navbar-top-menu__item" title="PTV Shows">
+            <span className="navbar-top-menu__item" title="TV Shows">
               TV Shows
             </span>
-            <span className="navbar-top-menu__item" title="Top IMDB">
-              Top IMDB
-            </span>
+
+            {showSearch && (
+              <>
+                <span className="navbar-top-menu__item" title="Top IMDB">
+                  Genres
+                </span>
+
+                <div className="navbar-top-menu__search-container">
+                  <div className="navbar-top-menu__icon-wrapper">
+                    <SearchRoundedIcon style={{ fontSize: 30 }} />
+                  </div>
+                  <input
+                    type="text"
+                    className="navbar-top-menu__input"
+                    placeholder="Search..."
+                  />
+                </div>
+              </>
+            )}
           </div>
         </div>
       </nav>
