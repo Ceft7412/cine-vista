@@ -7,7 +7,7 @@ import PlayCircleFilledRoundedIcon from "@mui/icons-material/PlayCircleFilledRou
 export default function Trending() {
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [trendingShows, setTrendingShows] = useState([]);
-  const [showOther, isShowOther] = useState([]);
+  const [showOther, isShowOther] = useState(false);
   const [hoveredId, setHoveredId] = useState(null);
   console.log(trendingShows);
   useEffect(() => {
@@ -34,7 +34,6 @@ export default function Trending() {
   }, []);
 
   useEffect(() => {
-    
     /**
      * Fetch two endpoints at the same time
      * Promise only returns a new promise that only resolves when the promise
