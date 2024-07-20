@@ -1,0 +1,93 @@
+.latest-block {
+  margin-top: 50px;
+  .latest__flex {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .latest__header {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      .latest__title {
+        font-size: 1.75rem;
+        font-weight: 600;
+      }
+      .movies-shows {
+        display: flex;
+        border: 1px solid white;
+        font-size: 0.875rem;
+        border-radius: 5px;
+        .movies-shows__item {
+          padding: 10px 0;
+          width: 100px;
+          text-align: center;
+          &.active {
+            background-color: white;
+            color: black;
+            cursor: default;
+          }
+          &:hover:not(.active) {
+            cursor: pointer;
+            background-color: rgba(235, 235, 235, 0.1);
+          }
+        }
+      }
+    }
+
+    .latest__content {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      grid-gap: 10px;
+      row-gap: 20px;
+      .latest-content__item {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .latest__image-container {
+          width: 180px;
+          height: 250px;
+          border-radius: 7px;
+          position: relative;
+          &:hover {
+            .latest__image {
+              filter: brightness(0.7);
+            }
+          }
+          .latest__image {
+            border-radius: 7px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+          .latest__icon-play-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+
+        .latest__info-container {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          .latest__title {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          .latest__date-duration-container {
+            font-size: 14px;
+            color: gray;
+            display: flex;
+            justify-content: space-between;
+            .latest__duration {
+              margin-right: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
