@@ -11,12 +11,14 @@ import {
 
 import Landing from "./pages/Landing";
 import Home from "./pages/Home";
+import Movies from "./pages/Movies";
 
 const router = createBrowserRouter(
-  createRoutesFromElements( 
+  createRoutesFromElements(
     <Route path="/">
       <Route index element={<Landing />} />
       <Route path="home" element={<Home />} />
+      <Route path="movies" element={<Movies />} />
     </Route>
   )
 );
