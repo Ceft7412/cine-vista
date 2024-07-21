@@ -6,7 +6,7 @@ export default function Latest({ setHoveredId, hoveredId }) {
   const [latestShows, setLatestShows] = useState([]);
 
   const [showOther, isShowOther] = useState(false);
-  console.log(showOther);
+
 
   useEffect(() => {
     const date = new Date();
@@ -15,10 +15,10 @@ export default function Latest({ setHoveredId, hoveredId }) {
     const oneMonthAgo = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
     Promise.all([
       fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_MOVIEDB_API}&primary_release_date.gte=${oneMonthAgo}&primary_release_date.lte=${currentDate}&page=1`
+        `https://api.themoviedb.org/3/discover/movie?api_key=38785ed2e2429a4e78f7de717e7e6f78&primary_release_date.gte=${oneMonthAgo}&primary_release_date.lte=${currentDate}&page=1`
       ).then((response) => response.json()),
       fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_MOVIEDB_API}&primary_release_date.gte=${oneMonthAgo}&primary_release_date.lte=${currentDate}&page=2`
+        `https://api.themoviedb.org/3/discover/movie?api_key=38785ed2e2429a4e78f7de717e7e6f78&primary_release_date.gte=${oneMonthAgo}&primary_release_date.lte=${currentDate}&page=2`
       ).then((response) => response.json()),
     ]).then(([data1, data2]) => {
       const movies = [...data1.results, ...data2.results];
@@ -43,10 +43,10 @@ export default function Latest({ setHoveredId, hoveredId }) {
      */
     Promise.all([
       fetch(
-        `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_MOVIEDB_API}&first_air_date.gte=${oneMonthAgo}&first_air_date.lte=${currentDate}&page=1`
+        `https://api.themoviedb.org/3/discover/tv?api_key=38785ed2e2429a4e78f7de717e7e6f78&first_air_date.gte=${oneMonthAgo}&first_air_date.lte=${currentDate}&page=1`
       ).then((response) => response.json()),
       fetch(
-        `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_MOVIEDB_API}&first_air_date.gte=${oneMonthAgo}&first_air_date.lte=${currentDate}&page=2`
+        `https://api.themoviedb.org/3/discover/tv?api_key=38785ed2e2429a4e78f7de717e7e6f78&first_air_date.gte=${oneMonthAgo}&first_air_date.lte=${currentDate}&page=2`
       ).then((response) => response.json()),
     ]).then(([data1, data2]) => {
       const movies = [...data1.results, ...data2.results];
