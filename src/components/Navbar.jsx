@@ -7,7 +7,6 @@ import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import { SearchContext } from "../App";
 export default function Navbar({ showSearch, bgColor, setIsOpen, isOpen }) {
   const { searchTerm, setSearchTerm } = useContext(SearchContext);
-  console.log(isOpen);
 
   const navigate = useNavigate();
   const location = useLocation();
