@@ -10,20 +10,18 @@ export default function Trending() {
   const [showOther, isShowOther] = useState(false);
   const [hoveredId, setHoveredId] = useState(null);
 
-  console.log(trendingMovies);
-  console.log(trendingShows);
   useEffect(() => {
     /**
-     * Fetch two endpoints at the same time 
+     * Fetch two endpoints at the same time
      * Promise only returns a new promise that only resolves when the promise
      * contained in the array have been resolved.
      */
     Promise.all([
       fetch(
-        `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_MOVIEDB_API}&page=1`
+        `https://api.themoviedb.org/3/trending/movie/day?api_key=38785ed2e2429a4e78f7de717e7e6f78&page=1`
       ).then((response) => response.json()),
       fetch(
-        `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_MOVIEDB_API}&page=2`
+        `https://api.themoviedb.org/3/trending/movie/day?api_key=38785ed2e2429a4e78f7de717e7e6f78&page=2`
       ).then((response) => response.json()),
     ]).then(([data1, data2]) => {
       const movies = [...data1.results, ...data2.results].slice(0, 30);
@@ -43,10 +41,10 @@ export default function Trending() {
      */
     Promise.all([
       fetch(
-        `https://api.themoviedb.org/3/trending/tv/day?api_key=${process.env.REACT_APP_MOVIEDB_API}&page=1`
+        `https://api.themoviedb.org/3/trending/tv/day?api_key=38785ed2e2429a4e78f7de717e7e6f78&page=1`
       ).then((response) => response.json()),
       fetch(
-        `https://api.themoviedb.org/3/trending/tv/day?api_key=${process.env.REACT_APP_MOVIEDB_API}&page=2`
+        `https://api.themoviedb.org/3/trending/tv/day?api_key=38785ed2e2429a4e78f7de717e7e6f78&page=2`
       ).then((response) => response.json()),
     ]).then(([data1, data2]) => {
       const movies = [...data1.results, ...data2.results];
