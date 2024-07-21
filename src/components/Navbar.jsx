@@ -1,11 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 
 import { useNavigate } from "react-router";
 import { useLocation } from "react-router-dom";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
-export default function Navbar({ showSearch }) {
+import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
+import { SearchContext } from "../App";
+export default function Navbar({ showSearch, bgColor, setIsOpen, isOpen }) {
+  const { searchTerm, setSearchTerm } = useContext(SearchContext);
+  console.log(isOpen);
+
   const navigate = useNavigate();
   const location = useLocation();
+  const formRef = useRef(null);
   const [showNavbar, setShowNavbar] = useState(true);
   const [scrollPosition, setScrollPosition] = useState(0);
 
@@ -24,19 +30,34 @@ export default function Navbar({ showSearch }) {
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-    };  
+    };
   }, [scrollPosition]);
 
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
   const toPage = (page) => {
-    console.log(page);
     navigate(`/${page}`);
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    navigate(`/search/${searchTerm}`);
   };
   return (
     <>
-      <div className={`navbar ${showNavbar ? "show" : "hide"}`}>
+      <div
+        className={`navbar ${showNavbar ? "show" : "hide"} ${
+          bgColor ? "bg-color" : "extra-marg"
+        } ${isOpen ? "padding-nav" : ""}`}
+      >
         <nav className="navbar-top">
-          <div className="navbar-top__flex">
+          <div className={`navbar-top__flex ${isOpen ? "padding-flex" : ""}`}>
             <div className="navbar-top__logo">
+              <div className="navbar-top__menu-icon" onClick={() => setIsOpen(!isOpen)}>
+                <MenuRoundedIcon />
+              </div>
               <h1>CineVista</h1>
             </div>
             <div className="navbar-top__menu">
@@ -54,25 +75,31 @@ export default function Navbar({ showSearch }) {
               >
                 Movies
               </span>
-              <span className="navbar-top-menu__item" title="TV Shows">
+              <span
+                className="navbar-top-menu__item"
+                title="TV Shows"
+                onClick={() => toPage("tvshows")}
+              >
                 TV Shows
               </span>
 
               {showSearch && (
                 <>
-                  <span className="navbar-top-menu__item" title="Top IMDB">
-                    Genres
-                  </span>
-
                   <div className="navbar-top-menu__search-container">
-                    <div className="navbar-top-menu__icon-wrapper">
+                    <div
+                      className="navbar-top-menu__icon-wrapper"
+                      onClick={handleSearchSubmit}
+                    >
                       <SearchRoundedIcon style={{ fontSize: 30 }} />
                     </div>
-                    <input
-                      type="text"
-                      className="navbar-top-menu__input"
-                      placeholder="Search..."
-                    />
+                    <form ref={formRef} onSubmit={handleSearchSubmit}>
+                      <input
+                        type="text"
+                        className="navbar-top-menu__input"
+                        onChange={handleSearchChange}
+                        placeholder="Search..."
+                      />
+                    </form>
                   </div>
                 </>
               )}
