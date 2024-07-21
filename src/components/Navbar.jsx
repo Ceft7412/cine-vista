@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext, useRef } from "react";
-
+import Logo from "../resources/logo.png";
 import { useNavigate } from "react-router";
 import { useLocation } from "react-router-dom";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
@@ -57,6 +57,7 @@ export default function Navbar({ showSearch, bgColor, setIsOpen, isOpen }) {
               <div className="navbar-top__menu-icon" onClick={() => setIsOpen(!isOpen)}>
                 <MenuRoundedIcon />
               </div>
+              <img src={Logo} alt="" width="50px" height="50px" />
               <h1>CineVista</h1>
             </div>
             <div className="navbar-top__menu">
