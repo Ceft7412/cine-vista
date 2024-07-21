@@ -10,7 +10,7 @@ export default function LandingContent() {
   const formRef = useRef(null);
 
   const { searchTerm, setSearchTerm } = useContext(SearchContext);
-  console.log(searchTerm);
+
   const toHomepage = () => {
     navigate("home");
   };
@@ -20,7 +20,7 @@ export default function LandingContent() {
   };
   const handleSearchSubmit = (event) => {
     event.preventDefault();
-    console.log(searchTerm);
+
     if (searchTerm) {
       navigate(`/search/${searchTerm}`);
     }
