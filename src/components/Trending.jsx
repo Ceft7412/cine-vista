@@ -9,10 +9,12 @@ export default function Trending() {
   const [trendingShows, setTrendingShows] = useState([]);
   const [showOther, isShowOther] = useState(false);
   const [hoveredId, setHoveredId] = useState(null);
+
+  console.log(trendingMovies);
   console.log(trendingShows);
   useEffect(() => {
     /**
-     * Fetch two endpoints at the same time
+     * Fetch two endpoints at the same time 
      * Promise only returns a new promise that only resolves when the promise
      * contained in the array have been resolved.
      */
