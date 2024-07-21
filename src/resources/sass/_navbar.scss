@@ -4,19 +4,32 @@
   right: 0;
   left: 0;
   transition: top 0.3s ease-in-out;
-  background-color: rgb(6, 6, 35);
   z-index: 1000;
+
+  &.bg-color {
+    background-color: rgb(6, 6, 35);
+  }
+  &.extra-marg {
+    margin-top: 30px;
+  }
   &.show {
     top: 0;
   }
   &.hide {
-    top: -100px;
+    top: -140px;
   }
 
+  &.padding-nav {
+    margin-top: auto;
+    top: 0;
+  }
   .navbar-top {
     height: 80px;
     margin: 0 auto;
     color: white;
+    @include response-to(phone) {
+      height: 50px;
+    }
 
     .navbar-top__flex {
       display: flex;
@@ -25,6 +38,18 @@
       padding: 20px 150px;
       width: 100%;
       height: 100%;
+      &.padding-position {
+        padding: 0 20px;
+      }
+      @include response-to(laptop) {
+        padding: 20px 20px;
+      }
+      @include response-to(phone) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
       .navbar-top__logo {
         display: flex;
         align-items: center;
@@ -33,6 +58,13 @@
           letter-spacing: 2px;
           color: rgb(92, 92, 236);
         }
+        .navbar-top__menu-icon {
+          display: none;
+          @include response-to(tablet) {
+            display: block;
+            margin-right: 20px;
+          }
+        }
       }
       .navbar-top__menu {
         display: flex;
@@ -40,12 +72,20 @@
         gap: 10px;
         font-size: 18px;
         font-weight: 600;
+        @include response-to(phone) {
+          gap: 0;
+        }
         .navbar-top-menu__item {
           padding: 10px;
+          white-space: nowrap;
           cursor: pointer;
           transition: color 0.3s ease-in;
           &:hover {
             color: rgb(92, 92, 236);
+          }
+          @include response-to(tablet) {
+            margin-left: 0;
+            display: none;
           }
         }
         .navbar-top-menu__search-container {
@@ -54,12 +94,26 @@
           width: 250px;
           display: flex;
           justify-content: flex-end;
+          @include response-to(tablet) {
+            margin-left: 0;
+            display: none;
+          }
+          @include response-to(phone) {
+            left: 0;
+            right: auto;
+            justify-content: flex-start;
+          }
+
           .navbar-top-menu__icon-wrapper {
             cursor: pointer;
             position: absolute;
             right: 10px;
             top: 5px;
             color: rgb(92, 92, 236);
+            @include response-to(phone) {
+              left: 10px;
+              right: auto;
+            }
           }
           .navbar-top-menu__input {
             height: 40px;
@@ -76,6 +130,10 @@
             &:focus {
               width: 250px;
               border-color: white;
+            }
+            @include response-to(phone) {
+              padding-right: 15px;
+              padding-left: 40px;
             }
           }
         }
