@@ -23,11 +23,11 @@ export default function Movies() {
   const [modal, setModal] = useState(false);
   const [modalName, setModalName] = useState("");
 
-  console.log(movies);
+
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_MOVIEDB_API}`
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=38785ed2e2429a4e78f7de717e7e6f78`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -36,7 +36,7 @@ export default function Movies() {
   }, []);
 
   useEffect(() => {
-    let url = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_MOVIEDB_API}&page=${page}`;
+    let url = `https://api.themoviedb.org/3/discover/movie?api_key=38785ed2e2429a4e78f7de717e7e6f78&page=${page}`;
     if (selectedGenre.length > 0) {
       url += `&with_genres=${selectedGenre.join(",")}`;
     }
