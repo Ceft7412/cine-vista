@@ -1,6 +1,5 @@
 .movies-block {
   color: white;
-
   background-color: rgb(6, 6, 35);
   width: 100%;
   padding-bottom: 100px;
@@ -17,11 +16,84 @@
     width: 90%;
     .movies__header {
       display: flex;
+      justify-content: space-between;
       align-items: center;
       gap: 30px;
       .movies__title {
         font-size: 24px;
         font-weight: 600;
+      }
+      .filter {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        .filter__item {
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          position: relative;
+          .filter__icon {
+            display: flex;
+            align-items: center;
+          }
+          .modal-movies {
+            position: absolute;
+            background-color: rgb(17, 17, 35);
+            border-radius: 5px;
+            z-index: 3000;
+            width: 400px;
+            height: 300px;
+            top: 40px;
+            right: 0;
+            overflow-y: auto;
+            .modal-movies__flex {
+              display: flex;
+              flex-direction: column;
+              padding: 20px 20px;
+              .modal-movies__header {
+                font-size: 20px;
+                margin-bottom: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .modal-movies__clear {
+                  font-size: 14px;
+                  display: flex;
+                  align-items: center;
+                  gap: 5px;
+                  padding: 5px;
+                  border-radius: 5px;
+                  &:hover {
+                    background-color: rgba(92, 92, 119, 0.54);
+                  }
+                }
+              }
+              .modal-movies__content {
+                display: grid;
+                padding: 5px 0;
+                grid-template-columns: 1fr 1fr; // Creates two columns of equal width
+                gap: 10px;
+                .movies-content__item {
+                  padding: 5px 5px;
+                  border-radius: 5px;
+                  .genre__item {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    .genre__check {
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    }
+                  }
+                  &:hover {
+                    background-color: rgba(92, 92, 119, 0.54);
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
     .movies__content {
@@ -29,6 +101,10 @@
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
       grid-gap: 10px;
       row-gap: 20px;
+      @include response-to(phone) {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        grid-gap: 20px;
+      }
       .movies__item {
         display: flex;
         flex-direction: column;
@@ -38,6 +114,9 @@
           height: 250px;
           border-radius: 7px;
           position: relative;
+          @include response-to(phone) {
+            width: 160px;
+          }
           &:hover {
             .movies__image {
               filter: brightness(0.7);
@@ -76,6 +155,35 @@
               margin-right: 20px;
             }
           }
+        }
+      }
+    }
+
+    .movies__pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 30px;
+      .movies__button {
+        padding: 7px;
+        width: 50px;
+        font-size: 18px;
+        background-color: rgb(6, 6, 35);
+        border: 1px solid rgb(6, 6, 35);
+        color: white;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &.clicks {
+          margin: 0 10px;
+        }
+        &:hover {
+          background-color: rgb(26, 26, 57);
+        }
+        &.active {
+          background-color: white;
+          color: black;
         }
       }
     }
