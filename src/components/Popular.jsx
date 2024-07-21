@@ -23,7 +23,7 @@ export default function Popular() {
    */
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_MOVIEDB_API}`
+      `https://api.themoviedb.org/3/movie/popular?api_key=38785ed2e2429a4e78f7de717e7e6f78`
     )
       .then((response) => response.json())
       .then((data) => {
